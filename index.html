@@ -1,1 +1,111 @@
-//hello hello
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Cards</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background: #f4f6fb;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 24px 16px;
+      }
+
+      .phone-screen {
+        width: min(420px, 100%);
+      }
+
+      .card-row {
+        display: flex;
+        gap: 16px;
+        align-items: stretch;
+      }
+
+      .card {
+        flex: 1 1 0;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 20px 16px;
+        box-shadow: 0 10px 24px rgba(20, 33, 61, 0.12);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        animation: rise-up 600ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+      }
+
+      .card:nth-child(2) {
+        animation-delay: 120ms;
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+        color: #ffffff;
+      }
+
+      .icon-blue {
+        background: linear-gradient(135deg, #2f5bff, #5c8dff);
+      }
+
+      .icon-purple {
+        background: linear-gradient(135deg, #8b4bff, #c17dff);
+      }
+
+      .label {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2a44;
+      }
+
+      .subtext {
+        font-size: 13px;
+        color: #6c7a99;
+      }
+
+      @keyframes rise-up {
+        from {
+          transform: translateY(28px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone-screen">
+      <section class="card-row">
+        <article class="card">
+          <div class="icon icon-blue">📈</div>
+          <div class="label">Daily Insights</div>
+          <div class="subtext">Track your growth</div>
+        </article>
+        <article class="card">
+          <div class="icon icon-purple">🔔</div>
+          <div class="label">Alerts Ready</div>
+          <div class="subtext">Stay in the loop</div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
