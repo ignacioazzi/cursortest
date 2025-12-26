@@ -28,18 +28,14 @@
         width: min(420px, 100%);
       }
 
-      .card-row {
-        display: flex;
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 16px;
-        align-items: stretch;
-      }
-
-      .card-row + .card-row {
-        margin-top: 16px;
       }
 
       .card {
-        flex: 1 1 0;
+        width: 100%;
         background: #ffffff;
         border-radius: 18px;
         padding: 20px 16px;
@@ -49,14 +45,7 @@
         align-items: flex-start;
         gap: 10px;
         animation: rise-up 600ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
-      }
-
-      .card:nth-child(2) {
-        animation-delay: 120ms;
-      }
-
-      .full-width-card {
-        width: 100%;
+        animation-delay: calc(var(--card-index, 0) * 120ms);
       }
 
       .icon {
@@ -102,14 +91,12 @@
   </head>
   <body>
     <main class="phone-screen">
-      <section class="card-row">
-        <article class="card full-width-card">
+      <section class="card-grid">
+        <article class="card">
           <div class="icon icon-blue">✨</div>
           <div class="label">Focus Mode</div>
           <div class="subtext">Deep work sessions</div>
         </article>
-      </section>
-      <section class="card-row">
         <article class="card">
           <div class="icon icon-blue">📈</div>
           <div class="label">Daily Insights</div>
@@ -120,15 +107,28 @@
           <div class="label">Alerts Ready</div>
           <div class="subtext">Stay in the loop</div>
         </article>
-      </section>
-      
-      <section class="card-row">
-        <article class="card full-width-card">
+        <article class="card">
           <div class="icon icon-purple">🧭</div>
           <div class="label">Weekly Plan</div>
           <div class="subtext">Map your priorities</div>
         </article>
       </section>
     </main>
+    <script>
+      const cardGrid = document.querySelector(".card-grid");
+      const assignCardIndexes = () => {
+        if (!cardGrid) return;
+        cardGrid.querySelectorAll(".card").forEach((card, index) => {
+          card.style.setProperty("--card-index", index);
+        });
+      };
+
+      assignCardIndexes();
+
+      const observer = new MutationObserver(assignCardIndexes);
+      if (cardGrid) {
+        observer.observe(cardGrid, { childList: true });
+      }
+    </script>
   </body>
 </html>
