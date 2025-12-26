@@ -34,6 +34,10 @@
         align-items: stretch;
       }
 
+      .card-row + .card-row {
+        margin-top: 16px;
+      }
+
       .card {
         flex: 1 1 0;
         background: #ffffff;
@@ -49,6 +53,10 @@
 
       .card:nth-child(2) {
         animation-delay: 120ms;
+      }
+
+      .full-width-card {
+        width: 100%;
       }
 
       .icon {
@@ -82,7 +90,7 @@
 
       @keyframes rise-up {
         from {
-          transform: translateY(28px);
+          transform: translateY(42px);
           opacity: 0;
         }
         to {
@@ -94,6 +102,20 @@
   </head>
   <body>
     <main class="phone-screen">
+      <section class="card-row">
+        <article class="card full-width-card">
+          <div class="icon icon-blue">✨</div>
+          <div class="label">Focus Mode</div>
+          <div class="subtext">Deep work sessions</div>
+        </article>
+      </section>
+      <section class="card-row">
+        <article class="card full-width-card">
+          <div class="icon icon-purple">🧭</div>
+          <div class="label">Weekly Plan</div>
+          <div class="subtext">Map your priorities</div>
+        </article>
+      </section>
       <section class="card-row">
         <article class="card">
           <div class="icon icon-blue">📈</div>
